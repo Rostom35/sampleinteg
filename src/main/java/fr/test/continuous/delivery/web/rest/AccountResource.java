@@ -76,7 +76,7 @@ public class AccountResource {
     public void activateAccount(@RequestParam(value = "key") String key) {
         Optional<User> user = userService.activateRegistration(key);
         if (!user.isPresent()) {
-            throw new InternalServerErrorException("No user was oops :: ! found for this reset key");
+            throw new InternalServerErrorException("No user was found for this reset key");
         }
     }
 
@@ -89,7 +89,7 @@ public class AccountResource {
     @GetMapping("/authenticate")
     @Timed
     public String isAuthenticated(HttpServletRequest request) {
-        log.debug("REST request to check if the current user is authenticated");
+        log.debug("REST request to check if the current user is authenticated !");
         return request.getRemoteUser();
     }
 
