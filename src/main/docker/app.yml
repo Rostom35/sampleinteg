@@ -1,0 +1,14 @@
+version: '2'
+services:
+    sampledevops-app:
+        image: sampledevops
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://sampledevops-postgresql:5432/sampleDevOps
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    sampledevops-postgresql:
+        extends:
+            file: postgresql.yml
+            service: sampledevops-postgresql
